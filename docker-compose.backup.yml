@@ -1,0 +1,13 @@
+version: "3"
+services: #different containers that you have
+  node-app: #node app container with its configurations
+    build: . #automating the docker build command by passing the path to dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app #bind mount vol
+      - /app/node_modules #anonymous vol
+    environment:
+      - PORT=3000
+   # env_file: to specify the env file path
+    #- ./.env

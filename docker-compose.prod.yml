@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "80:80"
+      
+  node-app:
+    build: 
+      context: .  #specify location
+      args: #diff arguments you want to pass
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: node index.js #or npm start

@@ -1,0 +1,29 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "3000:80"
+      
+  node-app:
+    build: 
+      context: .  #specify location
+      args: #diff arguments you want to pass
+        NODE_ENV: development
+    volumes:
+      - ./:/app #bind mount vol
+      - /app/node_modules #anonymous vol
+    environment: 
+      - NODE_ENV=development
+      - MONGO_USER=admin
+      - MONGO_PASSWORD=admin
+      - SESSION_SECRET=secret
+    command: npm run dev
+
+  
+  mongodb: #using the built in image from hub no need to customize
+    environment: #env var to make sure mongo container work properly by providing root usernamr and root password
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+
+
+      
