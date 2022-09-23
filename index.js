@@ -65,7 +65,7 @@ app.use(express.json());
 
 //if a get request is sent to this root path, a response is sent back
 app.get("/", (reg, res) => {  
-    res.send("<h2>Hello Ed, je t'aime bien</h2>");
+    res.send("<h2>Hello there!</h2>");
     console.log("yeah it rains");
 });
 
